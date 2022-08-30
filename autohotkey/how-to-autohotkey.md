@@ -4,7 +4,7 @@
 - Copy script to a file with `.ahk` extension
 - Run in terminal:
     - `AutoHotkey.exe .\script.ahk`
-- Make it [run on startup](../windows/run-on-startup.md) (It will run in the background in your system tray)
+- Make it [run on startup](/../windows/run-on-startup.md) (It will run in the background in your system tray)
 
 ## Writing scripts
 - Use Visual Studio Code:
