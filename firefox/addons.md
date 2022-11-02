@@ -27,6 +27,8 @@
 - [ClearURLs](https://addons.mozilla.org/en-GB/firefox/addon/clearurls/)
 - [Terms of Service; Didn’t Reader](https://addons.mozilla.org/en-GB/firefox/addon/terms-of-service-didnt-read/)
 - [Skip Redirect](https://addons.mozilla.org/en-GB/firefox/addon/skip-redirect/)
+- [Canvas Blocker](https://addons.mozilla.org/en-GB/firefox/addon/canvasblocker/)
+- [Behave!](https://addons.mozilla.org/en-GB/firefox/addon/behave/)
 
 ## Search
 - [Simple Translate](https://addons.mozilla.org/en-GB/firefox/addon/simple-translate/)
