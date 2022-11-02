@@ -1,7 +1,7 @@
 ### Sorted by importance/frequency of use in each category
 
 ## Power user
-- [Sidebery](https://addons.mozilla.org/en-GB/firefox/addon/sidebery/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)
+- [Sidebery](https://addons.mozilla.org/en-GB/firefox/addon/sidebery/)
 - [Focus site search bar](https://addons.mozilla.org/en-GB/firefox/addon/focus-site-search-bar/)
 - Always Right
 - Saka
