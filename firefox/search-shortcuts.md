@@ -4,7 +4,7 @@ You can add a shortcut to the address bar for search bars on various websites:
 - Right click on a search bar on the website
 - Select `Add a keyword for this search`
 - Type the key that you want to use
-- Press `save`
+- Press `Save`
 
 Now open a new tab and in the address bar and type the key that you selected followed by a query. You will now be redirected to the website with the search results of your query.
 
