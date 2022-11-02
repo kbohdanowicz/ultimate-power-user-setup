@@ -26,6 +26,7 @@
 - ~~HTTPS Everywhere~~ Use [this](https://blog.mozilla.org/security/2020/11/17/firefox-83-introduces-https-only-mode/) instead
 - [ClearURLs](https://addons.mozilla.org/en-GB/firefox/addon/clearurls/)
 - [Terms of Service; Didn’t Reader](https://addons.mozilla.org/en-GB/firefox/addon/terms-of-service-didnt-read/)
+- [Skip Redirect](https://addons.mozilla.org/en-GB/firefox/addon/skip-redirect/)
 
 ## Search
 - [Simple Translate](https://addons.mozilla.org/en-GB/firefox/addon/simple-translate/)
