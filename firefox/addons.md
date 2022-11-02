@@ -19,9 +19,7 @@
 - [Bitwarden - Free Password Manager](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
 - [Consent-O-Matic](https://addons.mozilla.org/en-US/firefox/addon/consent-o-matic/)
 - [I still don't care about cookies](https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies/)
-- [NoScript](https://addons.mozilla.org/en-US/firefox/addon/noscript/)
 - [Temp Mail - Disposable Temporary Email](https://addons.mozilla.org/en-US/firefox/addon/temp-mail/)
-- [Cookie AutoDelete](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/)
 - [Don't track me Google](https://addons.mozilla.org/en-US/firefox/addon/dont-track-me-google1/)
 - ~~HTTPS Everywhere~~ Use [this](https://blog.mozilla.org/security/2020/11/17/firefox-83-introduces-https-only-mode/) instead
 - [ClearURLs](https://addons.mozilla.org/en-GB/firefox/addon/clearurls/)
@@ -29,6 +27,9 @@
 - [Skip Redirect](https://addons.mozilla.org/en-GB/firefox/addon/skip-redirect/)
 - [Canvas Blocker](https://addons.mozilla.org/en-GB/firefox/addon/canvasblocker/)
 - [Behave!](https://addons.mozilla.org/en-GB/firefox/addon/behave/)
+
+### Sources:
+- https://github.com/arkenfox/user.js/wiki/4.1-Extensions
 
 ## Search
 - [Simple Translate](https://addons.mozilla.org/en-GB/firefox/addon/simple-translate/)
