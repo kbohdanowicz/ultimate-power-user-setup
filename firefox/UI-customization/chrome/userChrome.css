@@ -1,3 +1,5 @@
+@import url(tweaks/autohide_toolbox_in_fullscreen.css);
+
 #titlebar {
   /* display: none; */
   /* visibility: collapse !important; */
@@ -18,7 +20,9 @@
   */
 }
 
-/***\Disable Horizontal Tabs ***/
+
+
+/***\Disable_Horizontal_Tabs ***/
 :root {
   --sidebar-min-width: 136px;
   --sidebar-visible-width: 162px;

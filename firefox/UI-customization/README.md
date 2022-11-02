@@ -1,4 +1,4 @@
-## Add a custom style
+## Adding a custom style
 - Visit `about:config`
 - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
 - Visit `about:support` (in a new tab)

@@ -1,4 +1,4 @@
-## Add a search shortcut
+## Adding a search shortcut
 You can add a shortcut to the address bar for search bars on various websites:
 - Open a website for which you want to add a search shortcut
 - Right click on a search bar on the website

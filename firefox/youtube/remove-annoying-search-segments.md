@@ -1,6 +1,7 @@
+- Install 'uBlock Origin' addon
 - Open uBlock Origin dashboard
 - Select `my filters` tab
-- Copy these filters:
+- Copy and paste these filters:
 ```
 ! Removes 'People also ask' question suggestions from google search results
 google.com##[data-it="rq"]
