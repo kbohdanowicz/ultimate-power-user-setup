@@ -1,0 +1,1 @@
+Enable encrypted DNS - https://www.youtube.com/watch?v=Vm4JRJVLBtQ
