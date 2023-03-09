@@ -1,7 +1,8 @@
-- Install 'uBlock Origin' addon
-- Open uBlock Origin dashboard
-- Select `my filters` tab
-- Copy and paste these filters:
+## Remove annoying segments from search results
+1. Install `uBlock Origin` addon
+2. Open uBlock Origin dashboard
+3. Select `my filters` tab
+4. Copy and paste these filters:
 ```
 ! Removes 'People also ask' question suggestions from google search results
 google.com##[data-it="rq"]
@@ -21,4 +22,5 @@ youtube.com##ytd-shelf-renderer:has-text(/Previously watched/)
 youtube.com##ytd-shelf-renderer:has-text(/Results for similar searches/)
 youtube.com##ytd-shelf-renderer:has-text(/Channels new to you/)
 youtube.com##ytd-shelf-renderer:has-text(/New for you/)
+youtube.com##ytd-shelf-renderer:has-text(/From related searches/)
 ```

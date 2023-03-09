@@ -1,1 +1,0 @@
-https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome

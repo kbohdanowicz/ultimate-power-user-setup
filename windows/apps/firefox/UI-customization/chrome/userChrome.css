@@ -1,12 +1,10 @@
 @import url(tweaks/autohide_toolbox_in_fullscreen.css);
+@import url(tweaks/autohide_sidebar.css);
+
 
 #titlebar {
-  /* display: none; */
-  /* visibility: collapse !important; */
-}
-
-#TabsToolbar {
-  /* visibility: collapse !important; */
+/*   display: none; */
+/*   visibility: collapse !important; */
 }
 
 #nav-bar {
@@ -14,39 +12,73 @@
   /* padding-bottom: 2px; */
 }
 
-#sidebar-header {
-  /*
-  display: none !important; 
-  */
+
+/*** Hide/show sidebar on hover ***/
+#TabsToolbar {
+  display: none !important;
+/*   visibility: collapse !important; */
 }
 
+#sidebar-splitter {
+/* 	display: none !important; */
+}
 
+#sidebar-header {
+  display: none !important; 
+}
+
+/* #sidebar {
+	min-width: 0px !important;
+	max-width: none !important;
+} */
+
+:root {
+  --uc-sidebar-thin-width: 35px;
+  --uc-sidebar-wide-width: 200px;
+}
+
+/* #sidebar-box { */
+  /* transition-delay: 600ms !important;
+  transition: all 400ms !important;
+  position: relative !important;
+  overflow: hidden; */
+/*   min-width: var(--uc-sidebar-thin-width) !important; */
+/* 	max-width: var(--uc-sidebar-thin-width) !important; */
+/*   margin-left: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
+/*   margin-right: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
+/*   opacity: 0.5; */
+
+
+
+/* #sidebar-box:hover {
+  /* transition: all 400ms !important; */
+/*   min-width: var(--uc-sidebar-wide-width) !important; */
+/*   max-width: var(--uc-sidebar-wide-width) !important; */
+/*   margin-left: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
+/*   margin-right: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
+/*   opacity: 0.5; */
+/* } */ */
+
+/* End */
 
 /***\Disable_Horizontal_Tabs ***/
 :root {
-  --sidebar-min-width: 136px;
-  --sidebar-visible-width: 162px;
   /* --uc-window-control-width: 898px; */
   --uc-window-control-width: 0px; /* Space reserved for window controls */
   --uc-window-drag-space-width: 0px; /* Extra space reserved on both sides of the nav-bar to be able to drag the window */
   --uc-toolbar-height: 32px;
-
-  --scrollbar-face-color: rgb(210,210,210); /* Firefox 63 compatibility */
-  --scrollbar-track-color: rgb(46,54,69); /* Firefox 63 compatibility */
-  --scrollbar-color: rgba(0,0,0,.4) rgba(140,140,140,0.1);
-  --scrollbar-width: thin;
 }
+
 :root {
   --scrollbar-face-color: rgb(210,210,210); /* Firefox 63 compatibility */
   --scrollbar-track-color: rgb(46,54,69); /* Firefox 63 compatibility */
-  --scrollbar-color: rgba(0,0,0,.4) rgba(140,140,140,0.1);
-  --scrollbar-width: thin;
 }
 
 /* Scrollbar colors and width - applied globally */
 :root {
   scrollbar-color: rgb(210,210,210) rgb(46,54,69);
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
 } 
 
 /* CUSTOM CODE: Toolbar_color */
@@ -64,27 +96,25 @@
     background-color: #FFFFFF;
 }
 
-#sidebar-header {
-  overflow: hidden !important;
-}
-
 #tabbrowser-tabs {
   visibility: collapse !important;
 }
 
-#nav-bar::before,
-#nav-bar::after{
+#nav-bar::before, #nav-bar::after {
   content: "";
   display: -moz-box;
   width: var(--uc-window-drag-space-width);
 }
 
-/* #urlbar-container {
+/* 
+#urlbar-container {
   min-width:400px!important
 }
+
 #search-container {
   min-width:400px!important
-} */
+} 
+*/
 
 toolbar#nav-bar::after { 
   width: calc(var(--uc-window-control-width) + var(--uc-window-drag-space-width, 0px))
@@ -92,10 +122,6 @@ toolbar#nav-bar::after {
 
 :root:not([uidensity="compact"]) {
   --uc-toolbar-height: 38px
-}
-
-#TabsToolbar { 
-  visibility: collapse !important 
 }
 
 :root:not([inFullscreen]) #nav-bar {

@@ -1,2 +1,0 @@
-- add hyperlinks to addons
-- add descriptions to addons
