@@ -13,7 +13,19 @@
 ; WinGet window, ID, A
 ; "A" -> active window
 ;
+; =======================================
+; =============== CONFIG ================
+; =======================================
 
+#SingleInstance Force
+
+; Run as admin
+if !A_IsAdmin {
+   Run("*RunAs " (A_IsCompiled ? "" : A_AhkPath " ") Chr(34) A_ScriptFullPath Chr(34))
+}
+
+; 2 = A window's title can contain WinTitle anywhere inside it to be a match.
+SetTitleMatchMode 2
 
 ; =======================================
 ; ========== GLOBAL VARIABLES ===========
@@ -25,15 +37,6 @@ firefoxAhkClass := "ahk_class MozillaWindowClass"
 smoothScrollWindowName := "SmoothScroll License"
 vbaWindowName := "Microsoft Visual Basic for Applications"
 vscodeWindowName := "Visual Studio Code"
-
-; =======================================
-; =============== CONFIG ================
-; =======================================
-
-#SingleInstance Force
-
-; 2 = A window's title can contain WinTitle anywhere inside it to be a match.
-SetTitleMatchMode 2
 
 ; =======================================
 ; =========== KEY REBINDINGS ============
@@ -107,9 +110,6 @@ LShift & CapsLock::Send "{Backspace}"
 ; xd := "ahk_id " . DllCall('GetTaskmanWindow')
 ; MsgBox xd
 ; WinHide("ahk_id {DllCall('GetTaskmanWindow')}")
-
-
-
 
 LWin & t::ToggleTaskbarVisibility()
 
@@ -275,7 +275,7 @@ Loop
 #HotIf WinActive(vscodeWindowName)
    LCtrl & 1::ExecuteVbaScript()
    ExecuteVbaScript() {
-      delay := 50
+      delay := 80
       ; MsgBox "running"
       Send "^a"
       Sleep delay
