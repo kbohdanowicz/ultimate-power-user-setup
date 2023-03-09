@@ -1,9 +1,11 @@
+## Apps
+_TODO check which of these are on chocolatey_
 - [xmeters]()
 - [windirstat]()
 - [voice attack]()
 - [borderless gaming]()
 - [lightshot]()
-- [rivatuner (postal 2 60 fps?)]()
+- [rivatuner]()
 - [daemon tools lite]()
 - [msi afterburner]()
 - [f.lux]()
@@ -12,5 +14,3 @@
 - [notepad++]()
 - [twitch leecher]()
 - [cpuz]()
-
-TODO CHECK CHOCOLATEY APPS

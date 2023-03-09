@@ -6,6 +6,7 @@ Basically everything except:
 - Simple folder search
 
 ## Styling the search box
+_TODO_
 
 ## Everything search
 1. Install `Everything`:
