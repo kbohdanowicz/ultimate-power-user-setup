@@ -1,4 +1,7 @@
+
+/* Scrollbar colors and width */
 * { 
     scrollbar-color: rgb(100, 100, 100) rgb(42,42,46) !important;
-    scrollbar-width: thin !important;
+    scrollbar-width: none !important;
+	 /* scrollbar-color: currentColor transparent; */
 }

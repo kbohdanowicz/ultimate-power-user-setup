@@ -27,39 +27,10 @@
   display: none !important; 
 }
 
-/* #sidebar {
-	min-width: 0px !important;
-	max-width: none !important;
-} */
-
 :root {
   --uc-sidebar-thin-width: 35px;
   --uc-sidebar-wide-width: 200px;
 }
-
-/* #sidebar-box { */
-  /* transition-delay: 600ms !important;
-  transition: all 400ms !important;
-  position: relative !important;
-  overflow: hidden; */
-/*   min-width: var(--uc-sidebar-thin-width) !important; */
-/* 	max-width: var(--uc-sidebar-thin-width) !important; */
-/*   margin-left: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
-/*   margin-right: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
-/*   opacity: 0.5; */
-
-
-
-/* #sidebar-box:hover {
-  /* transition: all 400ms !important; */
-/*   min-width: var(--uc-sidebar-wide-width) !important; */
-/*   max-width: var(--uc-sidebar-wide-width) !important; */
-/*   margin-left: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
-/*   margin-right: calc((var(--uc-sidebar-wide-width) - var(--uc-sidebar-thin-width)) * -1) !important; */
-/*   opacity: 0.5; */
-/* } */ */
-
-/* End */
 
 /***\Disable_Horizontal_Tabs ***/
 :root {
@@ -76,9 +47,9 @@
 
 /* Scrollbar colors and width - applied globally */
 :root {
-  scrollbar-color: rgb(210,210,210) rgb(46,54,69);
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
+/*   scrollbar-color: rgb(210,210,210) rgb(46,54,69); */
+  /* scrollbar-width: none; */
+/*   scrollbar-gutter: stable; */
 } 
 
 /* CUSTOM CODE: Toolbar_color */

@@ -111,15 +111,22 @@ LShift & CapsLock::Send "{Backspace}"
 ; MsgBox xd
 ; WinHide("ahk_id {DllCall('GetTaskmanWindow')}")
 
-LWin & t::ToggleTaskbarVisibility()
+; LWin & t::ToggleTaskbarVisibility()
 
-ToggleTaskbarVisibility() {
-   if WinExist(trayAhkClass) {
-      WinHide trayAhkClass
-   } else {
-      WinShow trayAhkClass
-   }
-}
+; ToggleTaskbarVisibility() {
+;    ; MsgBox "ahk_class Shell_TrayWnd"
+;    if WinExist("ahk_class Shell_TrayWnd") {
+;       WinHide "ahk_class Shell_TrayWnd"
+;    ; } else if WinActive(trayAhkClass) {
+;    ; } else if A_PriorKey == "LWin" {
+;       ; MsgBox A_ThisHotkey
+;       ; MsgBox A_PriorHotkey
+;       ; MsgBox A_PriorKey
+;       ; WinShow trayAhkClass
+;    } else {
+;       WinShow "ahk_class Shell_TrayWnd"
+;    }
+; }
 
 ; LWin & [::Run("toggle_shokz.bat -c", , "Hide")
 
@@ -142,7 +149,7 @@ WinGetActiveTitle() {
 #HotIf WinActive("Sid Meier's Civilization V (DX11)")
    ; Requires BorderlessGaming
    ; Works for 1920x1080 resolution
-   LCtrl & End::EnableBorderless()
+   RCtrl & End::EnableBorderless()
 
    EnableBorderless() {
       C  955, 537  ; Options
@@ -162,6 +169,7 @@ WinGetActiveTitle() {
    
    C(x, y) {
       MouseClick "left", x, y
+      Sleep 100
    }
    #HotIf
    
@@ -275,8 +283,8 @@ Loop
 #HotIf WinActive(vscodeWindowName)
    LCtrl & 1::ExecuteVbaScript()
    ExecuteVbaScript() {
-      delay := 80
-      ; MsgBox "running"
+		delay := 80
+		; MsgBox "running"
       Send "^a"
       Sleep delay
       Send "^c"

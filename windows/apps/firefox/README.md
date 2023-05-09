@@ -34,6 +34,7 @@ Examples of useful shortcuts:
 - [Focus Site Search Bar](https://addons.mozilla.org/en-GB/firefox/addon/focus-site-search-bar/)
 - [Always Right](https://addons.mozilla.org/en-GB/firefox/addon/always-right/)
 - [Saka](https://addons.mozilla.org/en-GB/firefox/addon/saka/)
+- [Saka Key](https://addons.mozilla.org/en-US/firefox/addon/saka-key/)
 - [Augmented Steam](https://addons.mozilla.org/en-GB/firefox/addon/augmented-steam/)
 - [Scroll Anywhere](https://addons.mozilla.org/en-GB/firefox/addon/scroll_anywhere/)
 - [Tab Stash](https://addons.mozilla.org/en-GB/firefox/addon/tab-stash/)
@@ -42,10 +43,11 @@ Examples of useful shortcuts:
 - [Redirector](https://addons.mozilla.org/en-US/firefox/addon/redirector/)
 - [Gesturefy](https://addons.mozilla.org/en-US/firefox/addon/gesturefy/)
 - [Shortkeys](https://addons.mozilla.org/en-US/firefox/addon/shortkeys/)
-
+- [Hotkeys to Switch Tabs Left and Right](https://addons.mozilla.org/en-GB/firefox/addon/hotkeys-for-tabs-left-right/)
+	- Change to `Alt + Up` and `Alt + Down`
 ### Privacy & Safety
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-- [Bitwarden - Free Password Manager](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
+- [Bitwarden](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
 - [Consent-O-Matic](https://addons.mozilla.org/en-US/firefox/addon/consent-o-matic/)
 - [I still don't care about cookies](https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies/)
 - [Temp Mail - Disposable Temporary Email](https://addons.mozilla.org/en-US/firefox/addon/temp-mail/)
@@ -56,6 +58,7 @@ Examples of useful shortcuts:
 - [Skip Redirect](https://addons.mozilla.org/en-GB/firefox/addon/skip-redirect/)
 - [Canvas Blocker](https://addons.mozilla.org/en-GB/firefox/addon/canvasblocker/)
 - [Behave!](https://addons.mozilla.org/en-GB/firefox/addon/behave/)
+Don't touch my tabs! (rel=noopener)
 
 ### Search
 - [Simple Translate](https://addons.mozilla.org/en-GB/firefox/addon/simple-translate/)
@@ -71,12 +74,15 @@ Examples of useful shortcuts:
 - [BlockTube](https://addons.mozilla.org/en-GB/firefox/addon/blocktube/)
 - [YouTube Channel Whitelist for uBlock Origin](https://addons.mozilla.org/en-GB/firefox/addon/youtube-channel-whitelist/)
 - [PocketTube: Youtube Subscription Manager](https://addons.mozilla.org/en-GB/firefox/addon/youtube-subscription-groups/)
+- [Unhook](https://addons.mozilla.org/en-GB/firefox/addon/youtube-recommended-videos/)
 
 ### Appearance
 - [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
 - [Wikiwand: Wikipedia Modernized](https://addons.mozilla.org/en-US/firefox/addon/wikiwand-wikipedia-modernized/)
 - [Tabliss](https://addons.mozilla.org/en-US/firefox/addon/tabliss/)
 - [Center Pages](https://addons.mozilla.org/en-US/firefox/addon/center-pages/)
+- [Augmented Steam](https://augmentedsteam.com/)
+- [Auto Fullscreen](https://addons.mozilla.org/en-US/firefox/addon/i-auto-fullscreen/)
 
 ### Github
 - [JetBrains Toolbox Extension](https://addons.mozilla.org/en-US/firefox/addon/jetbrains-toolbox/)
