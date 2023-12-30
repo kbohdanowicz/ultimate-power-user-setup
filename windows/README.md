@@ -19,3 +19,28 @@ https://superuser.com/questions/113801/why-does-my-windows-computer-immediately-
 ```ps
 powercfg -devicequery wake_armed
 ```
+
+### Blurry text in apps on Windows
+This happened to me a couple of days ago and this fixed it for me.
+
+1. Go to Nvidia Control Panel by Clicking on Your Desktop and Clicking on "NVIDIA Control Panel"
+2. Once in Nvidia Control Panel Click on the Tab "Manage 3D settings"
+3. Click on the Restore Button.
+4. Make sure that antialiased-FXAA if turned OFF
+
+Once that's done
+
+4. Go to your windows search bar and search up "SystemPropertiesPerformance.exe"
+5. Once in SystemPropertiesPerformance.exe uncheck "Smooth edges of Screen Font" and "Use drop shadows for icons on the desktop"
+
+RESTART YOUR PC
+
+6. Open the application that you have been having problems with.  If it's fixed then you're good.  
+
+**FOR PEOPLE THAT DONT LIKE THE LOOK OF TEXT NOW**
+
+7. Go Back to SystemPropertiesPerformance.exe and recheck "Smooth edges of Screen Font" and "Use drop shadows for icons on the desktop"
+8. This should make everything look normal and fix the weird blurry text.
+
+
+***YOU MIGHT NEED TO GO TO TASK MANAGER AND RESTART AN APPLICATION FOR THE EFFECTS TO BE APPLIED***

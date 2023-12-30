@@ -33,6 +33,7 @@ SetTitleMatchMode 2
 
 trayAhkClass := "ahk_class Shell_TrayWnd"
 firefoxAhkClass := "ahk_class MozillaWindowClass"
+intellijAhkClass := "ahk_class SunAwtFrame"
 
 smoothScrollWindowName := "SmoothScroll License"
 vbaWindowName := "Microsoft Visual Basic for Applications"
@@ -151,17 +152,57 @@ GetActiveWindowTitle() {
    return WinGetTitle("A")
 }
 
+; #HotIf WinActive(intellijAhkClass)
+
+
+
+; #HotIf
+
+#HotIf WinActive(firefoxAhkClass)
+   ; Hijack these hotkeys to not let firefox recognize them
+   RShift & Enter::DoNothing()
+   LShift & Enter::DoNothing()
+   ^+w::DoNothing()
+
+	LAlt & q::ToggleFirefoxSidebar()
+
+   DoNothing() {
+
+   }
+	
+	; To be used with my custom css for firefox and sideberry
+	ToggleFirefoxSidebar() {
+		static isSidebarVisible := false
+		if (isSidebarVisible) {
+			MoveMouseToBottom()
+			isSidebarVisible := false
+		} else {
+			MoveMouseToBottomLeft()
+			isSidebarVisible := true
+		}
+		
+		MoveMouseToBottomLeft() {
+			MouseMove 0, 1080
+		}
+
+		MoveMouseToBottom() {
+			MouseMove 960, 1080
+		}
+	}
+#HotIf 
+
 ; Close/minimize window shortcut
 #HotIf GetKeyState("LAlt")
    ; LShift & e::MinimizeActiveWindow()
 
 	LShift & =::RestartAudio()
+	
+   LShift & q::CloseActiveWindow()
+   LCtrl & q::KillActiveWindow()
 
 	RestartAudio() {
-		Run "restart_audio.bat"
+		Run "restart-audio.bat"
 	}
-
-   LShift & q::CloseActiveWindow()
 
 	MinimizeActiveWindow() {
 		WinMinimize GetActiveWindowTitle()
@@ -175,8 +216,9 @@ GetActiveWindowTitle() {
 		WinClose GetActiveWindowTitle()
 	}
 
-   ; LAlt + F4
-   LCtrl & q::Send "!{F4}"
+	KillActiveWindow() {
+		Send "!{F4}"
+	}
 #HotIf
 
 #HotIf WinActive("Sid Meier's Civilization V (DX11)")
@@ -206,51 +248,6 @@ GetActiveWindowTitle() {
    }
 #HotIf
    
-; -- Firefox
-#HotIf WinActive(firefoxAhkClass)
-   ; Hijack these hotkeys to not let firefox recognize them
-   RShift & Enter::DoNothing()
-   LShift & Enter::DoNothing()
-   ^+w::DoNothing()
-
-   LWin & q::MakeFirefoxWindowAppearMaximized()
-
-	LAlt & q::ToggleSidebar()
-
-   DoNothing() {
-
-   }
-
-   ; Extend the window to secondary screen on the right to. Sidebery addon can be fitted on the secondary screen to not take space on the main screen 
-   MakeFirefoxWindowAppearMaximized() {
-      x := -8
-      y := 0
-      width := 2374
-      height := 1086
-      WinMove(firefoxAhkClass, , x, y, width, height)
-   }
-
-	; To be used with my custom css for firefox and sideberry
-	ToggleSidebar() {
-		static isSidebarVisible := false
-		if (isSidebarVisible) {
-			MoveMouseToBottom()
-			isSidebarVisible := false
-		} else {
-			MoveMouseToBottomLeft()
-			isSidebarVisible := true
-		}
-	}
-
-	MoveMouseToBottomLeft() {
-		MouseMove 0, 1080
-	}
-
-	MoveMouseToBottom() {
-		MouseMove 960, 1080
-	}
-#HotIf
-
 #HotIf WinActive("Borderlands 3")
    ; bind space to enter
 #HotIf
