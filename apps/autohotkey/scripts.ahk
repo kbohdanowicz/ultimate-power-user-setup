@@ -28,7 +28,7 @@ if !A_IsAdmin {
 SetTitleMatchMode 2
 
 ; =======================================
-; ========== GLOBAL VARIABLES ===========
+; ========== GLOBAL CONSTANTS ===========
 ; =======================================
 
 trayAhkClass := "ahk_class Shell_TrayWnd"
@@ -87,12 +87,27 @@ LShift & CapsLock::Send "{Backspace}"
 ; =======================================
 ; WinHide trayAhkClass
 
+Loop {
+	Sleep 60000
+	Reload
+	; Should be unreachable
+	Sleep 1000
+	MsgBox "Script could not be reloaded"
+}
+
+; ; -- Automatically close smoothscroll licence window
+; Loop {
+; 	WinWait(smoothScrollWindowName)
+; 	WinClose(smoothScrollWindowName)
+; }
 ; =======================================
-; ============== SCRIPTS ================
+; ============== HOTKEYS ================
 ; =======================================
 
 
+; Windows Explorer
 #HotIf WinActive("ahk_class CabinetWClass")
+
    LWin & n::CreateNewTextFile()
 
    CreateNewTextFile() {
@@ -128,19 +143,37 @@ LShift & CapsLock::Send "{Backspace}"
 ;    }
 ; }
 
-; LWin & [::Run("toggle_shokz.bat -c", , "Hide")
+; LWin & [::Run("toggle_tshokz.bat -c", , "Hide")
 
 ; LWin & ]::Run("toggle_shokz.bat -r", , "Hide")
 
-WinGetActiveTitle() {
+GetActiveWindowTitle() {
    return WinGetTitle("A")
 }
 
-; close/minimize window shortcut
+; Close/minimize window shortcut
 #HotIf GetKeyState("LAlt")
-   LShift & e::WinMinimize WinGetActiveTitle()
+   ; LShift & e::MinimizeActiveWindow()
 
-   LShift & q::WinClose WinGetActiveTitle()
+	LShift & =::RestartAudio()
+
+	RestartAudio() {
+		Run "restart_audio.bat"
+	}
+
+   LShift & q::CloseActiveWindow()
+
+	MinimizeActiveWindow() {
+		WinMinimize GetActiveWindowTitle()
+	}
+
+	CloseActiveWindow() {
+		windowTitle := GetActiveWindowTitle()
+		; if (InStr(windowTitle, "Access_Control_System_Administration", true)) {
+		; 	return
+		; }
+		WinClose GetActiveWindowTitle()
+	}
 
    ; LAlt + F4
    LCtrl & q::Send "!{F4}"
@@ -152,26 +185,26 @@ WinGetActiveTitle() {
    RCtrl & End::EnableBorderless()
 
    EnableBorderless() {
-      C  955, 537  ; Options
-      C  932, 302  ; Video Options
-      C  791, 369  ; 1920x1080
-      C  800, 425  ; 1680x1050
-      C  708, 500  ; Apply resolution
-      C  836, 557  ; Yes
-      C  682, 364  ; 1680x1050
-      C  680, 391  ; 1920x1080
-      C  585, 492  ; Apply resolution
-      C  962, 574  ; Yes
-      C 1272, 829 ; Accept
-      C  963, 500  ; Mods
-      C 1271, 824 ; Next
+      Click  955, 537  ; Options
+      Click  932, 302  ; Video Options
+      Click  791, 369  ; 1920x1080
+      Click  800, 425  ; 1680x1050
+      Click  708, 500  ; Apply resolution
+      Click  836, 557  ; Yes
+      Click  682, 364  ; 1680x1050
+      Click  680, 391  ; 1920x1080
+      Click  585, 492  ; Apply resolution
+      Click  962, 574  ; Yes
+      Click 1272, 829 ; Accept
+      Click  963, 500  ; Mods
+      Click 1271, 824 ; Next
    }
    
-   C(x, y) {
+   Click(x, y) {
       MouseClick "left", x, y
       Sleep 100
    }
-   #HotIf
+#HotIf
    
 ; -- Firefox
 #HotIf WinActive(firefoxAhkClass)
@@ -181,6 +214,8 @@ WinGetActiveTitle() {
    ^+w::DoNothing()
 
    LWin & q::MakeFirefoxWindowAppearMaximized()
+
+	LAlt & q::ToggleSidebar()
 
    DoNothing() {
 
@@ -194,24 +229,39 @@ WinGetActiveTitle() {
       height := 1086
       WinMove(firefoxAhkClass, , x, y, width, height)
    }
+
+	; To be used with my custom css for firefox and sideberry
+	ToggleSidebar() {
+		static isSidebarVisible := false
+		if (isSidebarVisible) {
+			MoveMouseToBottom()
+			isSidebarVisible := false
+		} else {
+			MoveMouseToBottomLeft()
+			isSidebarVisible := true
+		}
+	}
+
+	MoveMouseToBottomLeft() {
+		MouseMove 0, 1080
+	}
+
+	MoveMouseToBottom() {
+		MouseMove 960, 1080
+	}
 #HotIf
 
 #HotIf WinActive("Borderlands 3")
    ; bind space to enter
 #HotIf
 
-; -- Automatically close smoothscroll licence window
-Loop
-{
-   WinWait(smoothScrollWindowName)
-   WinClose(smoothScrollWindowName)
-}
-
-; -- Get Window Info
+; -- Active Window Info
 #HotIf GetKeyState("RCtrl")
    RShift & o::CopyActiveWindowTitle()
    
    RShift & p::CopyActiveWindowClass()
+
+   RShift & i::CopyActiveWindowClass()
 
    RShift & [::CopyActiveWindowSize()
 
@@ -220,8 +270,12 @@ Loop
    ; LShift & Delete::MakeActiveWindowAppearMaximized()
 
    CopyActiveWindowTitle() {
-      A_Clipboard := WinGetActiveTitle()
+      A_Clipboard := GetActiveWindowTitle()
    }
+
+	CopyWindowProcessName() {
+		A_Clipboard := WinGetProcessName()
+	}
 
    CopyActiveWindowClass() {
       A_Clipboard := WinGetClass("A")

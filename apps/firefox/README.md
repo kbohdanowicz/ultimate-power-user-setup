@@ -31,8 +31,6 @@ Examples of useful shortcuts:
 
 ### Power user
 - [Sidebery](https://addons.mozilla.org/en-GB/firefox/addon/sidebery/)
-- [Focus Site Search Bar](https://addons.mozilla.org/en-GB/firefox/addon/focus-site-search-bar/)
-- [Always Right](https://addons.mozilla.org/en-GB/firefox/addon/always-right/)
 - [Saka](https://addons.mozilla.org/en-GB/firefox/addon/saka/)
 - [Saka Key](https://addons.mozilla.org/en-US/firefox/addon/saka-key/)
 - [Augmented Steam](https://addons.mozilla.org/en-GB/firefox/addon/augmented-steam/)
@@ -42,13 +40,10 @@ Examples of useful shortcuts:
 - [Violent Monkey](https://addons.mozilla.org/en-GB/firefox/addon/violentmonkey/)
 - [Redirector](https://addons.mozilla.org/en-US/firefox/addon/redirector/)
 - [Gesturefy](https://addons.mozilla.org/en-US/firefox/addon/gesturefy/)
-- [Shortkeys](https://addons.mozilla.org/en-US/firefox/addon/shortkeys/)
-- [Hotkeys to Switch Tabs Left and Right](https://addons.mozilla.org/en-GB/firefox/addon/hotkeys-for-tabs-left-right/)
-	- Change to `Alt + Up` and `Alt + Down`
+
 ### Privacy & Safety
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 - [Bitwarden](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
-- [Consent-O-Matic](https://addons.mozilla.org/en-US/firefox/addon/consent-o-matic/)
 - [I still don't care about cookies](https://addons.mozilla.org/en-US/firefox/addon/istilldontcareaboutcookies/)
 - [Temp Mail - Disposable Temporary Email](https://addons.mozilla.org/en-US/firefox/addon/temp-mail/)
 - [Don't track me Google](https://addons.mozilla.org/en-US/firefox/addon/dont-track-me-google1/)

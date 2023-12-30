@@ -75,5 +75,5 @@ choco upgrade all
 ## Get install script for all installed packages
 _nu shell_
 ```
-choco list -l all | lines | each {|it| $it | split row " " | first } | drop 1 | prepend "choco install" | into string | str join " "
+choco list all | lines | each {|it| $it | split row " " | first } | drop 1 | prepend "choco install" | into string | str join " "
 ```
