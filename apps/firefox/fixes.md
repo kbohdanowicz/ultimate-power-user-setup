@@ -2,7 +2,7 @@
 - visit `about:config`
 - set `browser.quitShortcut.disabled` to `true`
 
-### Smooth scroll:
+### Edge-like Smooth scroll:
 - visit `about:config`
 - set these:
 - `general.smoothScroll.currentVelocityWeighting` to `0`

@@ -1,5 +1,5 @@
 # Disable taskbar white line
-Use TranclucentTB with config
+Use TranslucentTB with config
 
 # Disable opening taskbar on hover
 Use RoundedTB with margin = 2
