@@ -33,7 +33,10 @@
 				"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs",
 				"C:\\Users\\Admin\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu",
 				"C:\\Users\\Admin\\Desktop",
-				"E:\\Apps"
+				"E:\\Apps",
+				"E:\\Dev\\Komplex\\TCP",
+				"E:\\Steam\\SteamLibrary\\steamapps",
+				"E:\\Dev\\Komplex\\SW\\SW_3D"
 			],
 			"enabled": true,
 			"showFullFilePath": true,
@@ -44,7 +47,7 @@
 			"isEnabled": false
 		},
 		"calculatorOptions": {
-			"isEnabled": true,
+			"isEnabled": false,
 			"precision": 16
 		},
 		"colorConverterOptions": {
@@ -92,7 +95,7 @@
 		},
 		"everythingSearchOptions": {
 			"enabled": true,
-			"maxSearchResults": "5",
+			"maxSearchResults": "10",
 			"pathToEs": "C:\\Program Files\\Everything\\es.exe",
 			"prefix": " "
 		},
@@ -143,9 +146,11 @@
 			"isEnabled": true
 		},
 		"searchEngineOptions": {
-			"blackList": [],
+			"blackList": [
+				"C:\\Windows\\WinSxS\\amd64_microsoft-windows-appsdiagnostic_31bf3856ad364e35_10.0.19041.1_none_909aa2855af297d4"
+			],
 			"fuzzyness": "0.28",
-			"maxSearchResults": "5"
+			"maxSearchResults": "8"
 		},
 		"shortcutOptions": {
 			"isEnabled": true,
@@ -155,11 +160,21 @@
 			"folders": [
 				{
 					"excludeHiddenFiles": true,
-					"folderPath": "C:\\Users\\Admin",
+					"folderPath": "E:\\User\\Documents",
+					"recursive": true
+				},
+				{
+					"excludeHiddenFiles": false,
+					"folderPath": "E:\\",
+					"recursive": false
+				},
+				{
+					"excludeHiddenFiles": false,
+					"folderPath": "E:\\User\\Documents\\Cloud\\Krzychu\\Dokumenty\\Payments",
 					"recursive": false
 				}
 			],
-			"isEnabled": false,
+			"isEnabled": true,
 			"showFullFilePath": false
 		},
 		"translationOptions": {

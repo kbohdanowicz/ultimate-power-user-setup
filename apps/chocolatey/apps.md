@@ -4,9 +4,11 @@
 
 - `androidstudio`
 
-- `autohotkey.portable`
+- `anydesk`
 
-- `betterbird`
+- `anydesk.portable`
+
+- `autohotkey.portable`
 
 - `bluetoothview`
 
@@ -21,6 +23,8 @@
 - `chocolatey-misc-helpers.extension`
 
 - `chocolatey-os-dependency.extension`
+
+- `chocolatey-visualstudio.extension`
 
 - `compactgui`
 
@@ -48,12 +52,6 @@
 
 - `Everything`
 
-- `f.lux`
-
-- `f.lux.install`
-
-- `ferdium`
-
 - `ffmpeg`
 
 - `fulleventlogview`
@@ -61,8 +59,6 @@
 - `git`
 
 - `git.install`
-
-- `gradle`
 
 - `gsudo`
 
@@ -73,6 +69,8 @@
 - `irfanview`
 
 - `itch`
+
+- `jre8`
 
 - `just`
 
@@ -88,6 +86,12 @@
 
 - `KB3063858`
 
+- `KopiaUI`
+
+- `libreoffice-fresh`
+
+- `Listary`
+
 - `messenger`
 
 - `msiafterburner`
@@ -96,13 +100,31 @@
 
 - `netscan`
 
+- `nextcloud-client`
+
+- `notepadplusplus`
+
+- `notepadplusplus.install`
+
 - `obsidian`
 
 - `openhardwaremonitor`
 
+- `openvpn`
+
+- `openvpn-connect`
+
+- `pdf24`
+
 - `powertoys`
 
+- `putty`
+
+- `putty.portable`
+
 - `pycharm`
+
+- `python39`
 
 - `qbittorrent`
 
@@ -124,11 +146,13 @@
 
 - `SQLite`
 
+- `starship.install`
+
 - `staruml`
 
 - `taskbarx`
 
-- `thunderbird`
+- `translucenttb`
 
 - `usbdeview`
 
@@ -138,11 +162,17 @@
 
 - `vcredist2015`
 
+- `visualstudio2019community`
+
+- `visualstudio-installer`
+
 - `winaero-tweaker`
 
 - `winaero-tweaker.install`
 
 - `windhawk`
+
+- `wireguard`
 
 - `wiztree`
 

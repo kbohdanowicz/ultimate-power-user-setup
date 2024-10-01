@@ -17,4 +17,4 @@ script to emulate opening and closing sidebar.
 ## Website navigation with keyboard
 [Saka](https://addons.mozilla.org/en-GB/firefox/addon/saka/)
 
-[config](\saka\config.?)
+[config](\saka\config)

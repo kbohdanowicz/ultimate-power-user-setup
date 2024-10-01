@@ -3,8 +3,10 @@
 ; =============== NOTES =================
 ; =======================================
 ; -- Expressions
-; # -> hold LWin
-; ! -> hold LAlt
+; <^ -> hold LCtrl
+; <! -> hold LAlt
+; <+ -> hold LShift
+; <# -> hold LWin
 ; %variable% -> Get variable value
 ; % expression -> Evaluate expression
 ; ${ -> Escape '{''
@@ -17,8 +19,13 @@
 ; =============== CONFIG ================
 ; =======================================
 
-#SingleInstance Force
+; !!!!!!!!!!!!!!! TODO: Remove "could not close previous instance" prompt
+; #SingleInstance Force
 
+; Required for loop to run I guess
+Persistent
+
+; Process Close Autohotkey.exe
 ; Run as admin
 if !A_IsAdmin {
    Run("*RunAs " (A_IsCompiled ? "" : A_AhkPath " ") Chr(34) A_ScriptFullPath Chr(34))
@@ -38,6 +45,23 @@ intellijAhkClass := "ahk_class SunAwtFrame"
 smoothScrollWindowName := "SmoothScroll License"
 vbaWindowName := "Microsoft Visual Basic for Applications"
 vscodeWindowName := "Visual Studio Code"
+grimDawnExe := "ahk_exe Grim Dawn.exe"
+
+; =======================================
+; ============ DEFAULT RUN ==============
+; =======================================
+
+; ========================== GRIM DAWN ==========================
+global isTeleportUiPrepared := false
+
+loop {
+	WinWait grimDawnExe
+	; MsgBox "Grim Dawn started"
+	isTeleportUiPrepared := false
+	WinWaitClose
+	; MsgBox "Grim Dawn closed"
+	Sleep 300
+}
 
 ; =======================================
 ; =========== KEY REBINDINGS ============
@@ -83,19 +107,6 @@ LShift & CapsLock::Send "{Backspace}"
 ;    return
 ; #If
 
-; =======================================
-; ============ DEFAULT RUN ==============
-; =======================================
-; WinHide trayAhkClass
-
-Loop {
-	Sleep 60000
-	Reload
-	; Should be unreachable
-	Sleep 1000
-	MsgBox "Script could not be reloaded"
-}
-
 ; ; -- Automatically close smoothscroll licence window
 ; Loop {
 ; 	WinWait(smoothScrollWindowName)
@@ -108,7 +119,6 @@ Loop {
 
 ; Windows Explorer
 #HotIf WinActive("ahk_class CabinetWClass")
-
    LWin & n::CreateNewTextFile()
 
    CreateNewTextFile() {
@@ -160,19 +170,23 @@ GetActiveWindowTitle() {
 
 #HotIf WinActive(firefoxAhkClass)
    ; Hijack these hotkeys to not let firefox recognize them
+	LShift & Enter::DoNothing()
    RShift & Enter::DoNothing()
-   LShift & Enter::DoNothing()
-   ^+w::DoNothing()
+	^+w::DoNothing()
 
 	LAlt & q::ToggleFirefoxSidebar()
 
    DoNothing() {
 
    }
-	
-	; To be used with my custom css for firefox and sideberry
+
+	Debug() {
+		MsgBox "Shortcut works"
+	}
+	; To be used with my custom css for firefox and sidebery
 	ToggleFirefoxSidebar() {
 		static isSidebarVisible := false
+	
 		if (isSidebarVisible) {
 			MoveMouseToBottom()
 			isSidebarVisible := false
@@ -183,13 +197,59 @@ GetActiveWindowTitle() {
 		
 		MoveMouseToBottomLeft() {
 			MouseMove 0, 1080
+			Sleep 80
+			MouseClick "left", 0, 1080
 		}
 
 		MoveMouseToBottom() {
+			; In Sidebery the "Activate selection" key must be set to "Ctrl + Shift + Q" 
+			Send "^{Q}" ; Actually it sends a Ctrl + Shift + Q
+			Sleep 50
 			MouseMove 960, 1080
+			MouseClick "left", 960, 1080
 		}
 	}
 #HotIf 
+
+#HotIf WinActive("| Trello")
+
+	<^<!<+UP::MoveCardUp()
+	<^<!<+DOWN::MoveCardDown()
+
+	MoveCardUp() {
+		MoveCard("UP")	
+	}
+
+	MoveCardDown() {
+		MoveCard("DOWN")	
+	}
+
+	MoveCard(direction) {
+		direction := "{" . direction . "}"
+		Send "e"    ; Enter edit mode 
+		SendDelayed "{TAB}"  ; Unfocus title
+		SendDelayed "q", 75  ; Show Saka shortcuts
+		SendDelayed "q", 75  ; Open Move menu
+		SendDelayed "w", 75
+		SendDelayed "{TAB}"  ; Focus position menu
+		SendDelayed "{TAB}"
+		SendDelayed "{TAB}"
+		SendDelayed "{TAB}"
+		SendDelayed "{TAB}"
+		SendDelayed "{TAB}"
+		SendDelayed direction  ; Open Position menu
+		SendDelayed direction  ; Select up or down position
+		SendDelayed "{ENTER}"  ; Accept
+		SendDelayed "{TAB}"  ; Accept
+		SendDelayed "{ENTER}"  ; Accept
+	}
+
+	SendDelayed(key, delay := 65) {
+		Sleep delay
+		Send key
+	}
+
+#HotIf
 
 ; Close/minimize window shortcut
 #HotIf GetKeyState("LAlt")
@@ -210,17 +270,28 @@ GetActiveWindowTitle() {
 
 	CloseActiveWindow() {
 		windowTitle := GetActiveWindowTitle()
-		; if (InStr(windowTitle, "Access_Control_System_Administration", true)) {
-		; 	return
-		; }
-		WinClose GetActiveWindowTitle()
+		MsgBox "Closing window"
+		if (WinActive(firefoxAhkClass)) {
+			return
+		}
+		if (InStr(windowTitle, "System Shock", true)) {
+			return
+		}
+		
+		WinClose windowTitle
 	}
 
 	KillActiveWindow() {
+		MsgBox "Killing window"
+		if (WinActive(firefoxAhkClass)) {
+			return
+		}
+
 		Send "!{F4}"
 	}
 #HotIf
 
+; ===================== GAMES =====================
 #HotIf WinActive("Sid Meier's Civilization V (DX11)")
    ; Requires BorderlessGaming
    ; Works for 1920x1080 resolution
@@ -252,15 +323,60 @@ GetActiveWindowTitle() {
    ; bind space to enter
 #HotIf
 
+#HotIf WinActive("Grim Dawn")
+	XButton2::OpenTeleportList()
+#HotIf
+
+OpenTeleportList() {
+	global isTeleportUiPrepared
+
+	delay := 25
+
+	Send "{F5}" ; Open dpyes window
+	Sleep delay
+	
+	Send "{Up}" ; Select tab
+	Sleep delay
+
+	if (not isTeleportUiPrepared) {
+		Send "{Right}" ; Select teleport tab
+		Sleep delay
+
+		Send "{Enter}" ; Open teleport tab
+		Sleep delay
+		
+		Send "{Down}" ; Select "Require double click to teleport"
+		Sleep delay
+
+		Send "{Enter}" ; Uncheck "Require double click to teleport"
+		Sleep delay
+		
+		Send "{Up}" ; Select teleport tab
+		Sleep delay
+
+		isTeleportUiPrepared := true
+	}
+
+	Send "{Down}"
+	Sleep delay
+	Send "{Down}"
+	Sleep delay
+	Send "{Down}"
+	Sleep delay
+	Send "{Down}"
+	Sleep delay
+	Send "{Enter}"
+}
+
 ; -- Active Window Info
 #HotIf GetKeyState("RCtrl")
-   RShift & o::CopyActiveWindowTitle()
+   RShift & [::CopyActiveWindowTitle()
    
    RShift & p::CopyActiveWindowClass()
 
    RShift & i::CopyActiveWindowClass()
 
-   RShift & [::CopyActiveWindowSize()
+   RShift & =::CopyActiveWindowSize()
 
    RShift & ]::CopyMousePosition()
 
@@ -268,6 +384,7 @@ GetActiveWindowTitle() {
 
    CopyActiveWindowTitle() {
       A_Clipboard := GetActiveWindowTitle()
+		MsgBox "" . A_Clipboard
    }
 
 	CopyWindowProcessName() {
@@ -329,7 +446,6 @@ GetActiveWindowTitle() {
 ; }
 
 ; LCtrl & Enter::MouseClick left
-
 
 #HotIf WinActive(vscodeWindowName)
    LCtrl & 1::ExecuteVbaScript()
