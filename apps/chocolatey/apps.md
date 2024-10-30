@@ -60,17 +60,23 @@
 
 - `git.install`
 
+- `github-desktop`
+
+- `golang`
+
 - `gsudo`
 
 - `handbrake`
 
 - `handbrake.install`
 
+- `hourglass.install`
+
 - `irfanview`
 
 - `itch`
 
-- `jre8`
+- `jetbrains-rider`
 
 - `just`
 
@@ -86,13 +92,13 @@
 
 - `KB3063858`
 
+- `KB4019990`
+
 - `KopiaUI`
 
+- `less`
+
 - `libreoffice-fresh`
-
-- `Listary`
-
-- `messenger`
 
 - `msiafterburner`
 
@@ -100,7 +106,13 @@
 
 - `netscan`
 
+- `netscan.install`
+
 - `nextcloud-client`
+
+- `nodejs`
+
+- `nodejs.install`
 
 - `notepadplusplus`
 
@@ -122,8 +134,6 @@
 
 - `putty.portable`
 
-- `pycharm`
-
 - `python39`
 
 - `qbittorrent`
@@ -131,6 +141,10 @@
 - `reshade`
 
 - `rust`
+
+- `rustdesk`
+
+- `rustdesk.install`
 
 - `rustup.install`
 
@@ -149,6 +163,8 @@
 - `starship.install`
 
 - `staruml`
+
+- `sunshine`
 
 - `taskbarx`
 

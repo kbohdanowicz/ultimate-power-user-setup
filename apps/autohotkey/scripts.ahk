@@ -67,11 +67,11 @@ loop {
 ; =========== KEY REBINDINGS ============
 ; =======================================
 
-; -- Bind Capslock to Backspace
-CapsLock::         Send "{Backspace}"
-LCtrl  & CapsLock::Send "{Backspace}"
-LAlt   & CapsLock::Send "{Backspace}"
-LShift & CapsLock::Send "{Backspace}"
+; -- Bind Capslock to Escape
+LShift & CapsLock::Send "{Escape}"
+LCtrl & CapsLock::Send "{Escape}"
+LAlt & CapsLock::Send "{Escape}"
+CapsLock::Send "{Escape}"
 
 ; -- Bind Semicolon to Colon
 `;::Send "{Text}:"
@@ -79,23 +79,32 @@ LShift & CapsLock::Send "{Backspace}"
 ; -- Bind Colon to Semicolon
 :::Send "{Text};"
 
+; -- Bind 9 to Left Paren
+; 9::Send "{Text}("
+
+; ; -- Bind 0 to Right Paren
+; 0::Send "{Text})"
+
+; ; -- Bind Left Paren to 9
+; (::Send "{Text}9"
+
+; ; -- Bind Right Paren to 0
+; )::Send "{Text}0"
+
+; -- Bind Quote to Double Quote
+'::Send "{Text}`""
+
+; -- Bind Double Quote to Quote
+"::Send "{Text}'"
+
 ; -- Bind Hyphen to Underscore
 ; -::Send {Text}_
 
 ; -- Bind Underscore to Hyphen
 ; _::Send {Text}-
 
-; -- Bind Quote to Double Quote
-; '::Send {Text}"
-
-; -- Bind Double Quote to Quote
-; "::Send {Text}'
-
 ; -- Bind Tilde to single press Tilde
-; LShift & `::
-;    SendRaw ~1 ; '1' could be any char
-;    Send {BackSpace}
-; return
+LShift & `::Send "~{Space}"
 
 ; -- Add space and move cursor left once after bracket opening
 ; ${::SendRaw {
@@ -164,17 +173,17 @@ GetActiveWindowTitle() {
 
 ; #HotIf WinActive(intellijAhkClass)
 
-
-
 ; #HotIf
-
 #HotIf WinActive(firefoxAhkClass)
    ; Hijack these hotkeys to not let firefox recognize them
 	LShift & Enter::DoNothing()
    RShift & Enter::DoNothing()
 	^+w::DoNothing()
 
-	LAlt & q::ToggleFirefoxSidebar()
+	; We can override default firefox hotkeys by capturing them
+	; and sending hard to reach ones
+	LAlt & Q::ToggleFirefoxSidebar()
+	LCtrl & D::RestoreClosedTab()
 
    DoNothing() {
 
@@ -183,6 +192,11 @@ GetActiveWindowTitle() {
 	Debug() {
 		MsgBox "Shortcut works"
 	}
+
+	RestoreClosedTab() {
+		Send "!{O}" ; Alt + Shift + O
+	}
+
 	; To be used with my custom css for firefox and sidebery
 	ToggleFirefoxSidebar() {
 		static isSidebarVisible := false
@@ -197,65 +211,57 @@ GetActiveWindowTitle() {
 		
 		MoveMouseToBottomLeft() {
 			MouseMove 0, 1080
-			Sleep 80
-			MouseClick "left", 0, 1080
 		}
 
 		MoveMouseToBottom() {
 			; In Sidebery the "Activate selection" key must be set to "Ctrl + Shift + Q" 
-			Send "^{Q}" ; Actually it sends a Ctrl + Shift + Q
+			Send "^{Q}" ; Ctrl + Shift + Q
 			Sleep 50
 			MouseMove 960, 1080
-			MouseClick "left", 960, 1080
+			; MouseClick "left", 960, 1080
 		}
 	}
 #HotIf 
 
 #HotIf WinActive("| Trello")
 
-	<^<!<+UP::MoveCardUp()
-	<^<!<+DOWN::MoveCardDown()
-
-	MoveCardUp() {
-		MoveCard("UP")	
-	}
-
-	MoveCardDown() {
-		MoveCard("DOWN")	
-	}
+	<^<!<+UP::MoveCard("UP")
+	<^<!<+DOWN::MoveCard("DOWN")
 
 	MoveCard(direction) {
 		direction := "{" . direction . "}"
-		Send "e"    ; Enter edit mode 
-		SendDelayed "{TAB}"  ; Unfocus title
-		SendDelayed "q", 75  ; Show Saka shortcuts
-		SendDelayed "q", 75  ; Open Move menu
-		SendDelayed "w", 75
-		SendDelayed "{TAB}"  ; Focus position menu
-		SendDelayed "{TAB}"
-		SendDelayed "{TAB}"
-		SendDelayed "{TAB}"
-		SendDelayed "{TAB}"
-		SendDelayed "{TAB}"
-		SendDelayed direction  ; Open Position menu
-		SendDelayed direction  ; Select up or down position
-		SendDelayed "{ENTER}"  ; Accept
-		SendDelayed "{TAB}"  ; Accept
-		SendDelayed "{ENTER}"  ; Accept
+		Send "e"                  ; Enter edit mode 
+		SendDelayedShort "{TAB}"  ; Unfocus title
+		SendDelayedMedium "q"     ; Show Saka shortcuts
+		SendDelayedMedium "q"     ; Open Move menu
+		SendDelayedMedium "w"
+		SendDelayedShort "{TAB}"  ; Focus position menu
+		SendDelayedShort "{TAB}"
+		SendDelayedShort "{TAB}"
+		SendDelayedShort "{TAB}"
+		SendDelayedShort "{TAB}"
+		SendDelayedShort "{TAB}"
+		SendDelayedShort direction  ; Open Position menu
+		SendDelayedShort direction  ; Select up or down position
+		SendDelayedShort "{ENTER}"  ; Accept
+		SendDelayedShort "{TAB}"    ; Accept
+		SendDelayedShort "{ENTER}"  ; Accept
 	}
 
-	SendDelayed(key, delay := 65) {
-		Sleep delay
-		Send key
+	SendDelayedShort(key) {
+		SendDelayed(key, 65)
 	}
-
+	
+	SendDelayedMedium(key) {
+		SendDelayed(key, 75)
+	}
 #HotIf
 
 ; Close/minimize window shortcut
 #HotIf GetKeyState("LAlt")
    ; LShift & e::MinimizeActiveWindow()
 
-	LShift & =::RestartAudio()
+	; LShift & =::RestartAudio()
 	
    LShift & q::CloseActiveWindow()
    LCtrl & q::KillActiveWindow()
@@ -270,10 +276,10 @@ GetActiveWindowTitle() {
 
 	CloseActiveWindow() {
 		windowTitle := GetActiveWindowTitle()
-		MsgBox "Closing window"
-		if (WinActive(firefoxAhkClass)) {
-			return
-		}
+		; MsgBox "Closing window"
+		; if (WinActive(firefoxAhkClass)) {
+		; 	return
+		; }
 		if (InStr(windowTitle, "System Shock", true)) {
 			return
 		}
@@ -282,7 +288,7 @@ GetActiveWindowTitle() {
 	}
 
 	KillActiveWindow() {
-		MsgBox "Killing window"
+		; MsgBox "Killing window"
 		if (WinActive(firefoxAhkClass)) {
 			return
 		}
@@ -292,7 +298,7 @@ GetActiveWindowTitle() {
 #HotIf
 
 ; ===================== GAMES =====================
-#HotIf WinActive("Sid Meier's Civilization V (DX11)")
+#HotIf WinActive("Sid Meier's Civilization V")
    ; Requires BorderlessGaming
    ; Works for 1920x1080 resolution
    RCtrl & End::EnableBorderless()
@@ -324,49 +330,55 @@ GetActiveWindowTitle() {
 #HotIf
 
 #HotIf WinActive("Grim Dawn")
-	XButton2::OpenTeleportList()
-#HotIf
+	XButton1::OpenTeleportList()
+   
+	OpenTeleportList() {
+		global isTeleportUiPrepared
 
-OpenTeleportList() {
-	global isTeleportUiPrepared
+		delay := 25
 
-	delay := 25
+		Send "{F5}" ; Open dpyes window
+		Sleep delay
+		
+		Send "{Up}" ; Select tab
+		Sleep delay
 
-	Send "{F5}" ; Open dpyes window
-	Sleep delay
-	
-	Send "{Up}" ; Select tab
-	Sleep delay
+		if (not isTeleportUiPrepared) {
+			PrepareTeleportUI(delay)
+		}
 
-	if (not isTeleportUiPrepared) {
+		Send "{Down}"
+		Sleep delay
+		Send "{Down}"
+		Sleep delay
+		Send "{Down}"
+		Sleep delay
+		Send "{Down}"
+		Sleep delay
+		Send "{Enter}"
+	}
+
+	PrepareTeleportUI(delay) {
+		global isTeleportUiPrepared
+
 		Send "{Right}" ; Select teleport tab
 		Sleep delay
 
 		Send "{Enter}" ; Open teleport tab
 		Sleep delay
-		
+
 		Send "{Down}" ; Select "Require double click to teleport"
 		Sleep delay
 
 		Send "{Enter}" ; Uncheck "Require double click to teleport"
 		Sleep delay
-		
+
 		Send "{Up}" ; Select teleport tab
 		Sleep delay
 
 		isTeleportUiPrepared := true
 	}
-
-	Send "{Down}"
-	Sleep delay
-	Send "{Down}"
-	Sleep delay
-	Send "{Down}"
-	Sleep delay
-	Send "{Down}"
-	Sleep delay
-	Send "{Enter}"
-}
+#HotIf
 
 ; -- Active Window Info
 #HotIf GetKeyState("RCtrl")
@@ -448,7 +460,7 @@ OpenTeleportList() {
 ; LCtrl & Enter::MouseClick left
 
 #HotIf WinActive(vscodeWindowName)
-   LCtrl & 1::ExecuteVbaScript()
+   ; LCtrl & 1::ExecuteVbaScript()
    ExecuteVbaScript() {
 		delay := 80
 		; MsgBox "running"
@@ -473,3 +485,10 @@ OpenTeleportList() {
       ;WinActivate vscodeWindowName
    }
 #HotIf
+
+; General
+
+SendDelayed(key, delay) {
+	Sleep delay
+	Send key
+}
